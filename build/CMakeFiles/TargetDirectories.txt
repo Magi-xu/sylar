@@ -1,0 +1,4 @@
+/root/sylar/build/CMakeFiles/sylar.dir
+/root/sylar/build/CMakeFiles/test.dir
+/root/sylar/build/CMakeFiles/edit_cache.dir
+/root/sylar/build/CMakeFiles/rebuild_cache.dir
