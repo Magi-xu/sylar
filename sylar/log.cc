@@ -130,12 +130,8 @@ namespace sylar {
     std::string m_string;
     };
 
-    Logger::Logger (const std::string& name)
-        :m_name(name) {
-            if (m_name == "") {
-                m_name = "root";
-            }
-        }
+    Logger::Logger (const std::string& name = "root")
+        :m_name(name) {}
 
     void Logger::log(LogLevel::Level level, LogEvent::ptr event) {
         if (level >= m_level) {
@@ -162,10 +158,10 @@ namespace sylar {
         log(LogLevel::DEBUG, event);
     }
 
-    void Logger::addAppender(LogAppender::ptr appender) {
+    void Logger::addAppender(std::shared_ptr<LogAppender> appender) {
         m_appenders.push_back(appender);
     }
-    void Logger::delAppender(LogAppender::ptr appender) {
+    void Logger::delAppender(std::shared_ptr<LogAppender> appender) {
         for (auto it = m_appenders.begin(); it != m_appenders.end(); ++it) {
             if (*it == appender) {
                 m_appenders.erase(it);

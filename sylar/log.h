@@ -12,6 +12,10 @@
 
 namespace sylar {
 
+class LogLevel;
+class LogEvent;
+class Logger;
+class LogFormatter;
 class LogAppender;
 
 //日志级别
@@ -69,7 +73,7 @@ private:
 public:
     typedef std::shared_ptr<Logger> ptr;
 
-    Logger (const std::string& name = "root");
+    Logger (const std::string& name);
     void log(LogLevel::Level level, LogEvent::ptr event);
 
     void debug(LogEvent::ptr event);
