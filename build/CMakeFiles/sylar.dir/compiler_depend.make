@@ -3,6 +3,7 @@
 
 CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
   /root/sylar/sylar/log.h \
+  /root/sylar/sylar/singleton.h \
   /usr/include/_G_config.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -96,6 +97,7 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
   /usr/include/c++/4.8.2/cctype \
   /usr/include/c++/4.8.2/cerrno \
   /usr/include/c++/4.8.2/clocale \
+  /usr/include/c++/4.8.2/cstdarg \
   /usr/include/c++/4.8.2/cstdint \
   /usr/include/c++/4.8.2/cstdio \
   /usr/include/c++/4.8.2/cstdlib \
@@ -170,6 +172,51 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
   /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h \
   /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stdint.h
 
+CMakeFiles/sylar.dir/sylar/util.cc.o: /root/sylar/sylar/util.cc \
+  /root/sylar/sylar/util.h \
+  /usr/include/asm/unistd.h \
+  /usr/include/asm/unistd_64.h \
+  /usr/include/bits/byteswap-16.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/confname.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/environments.h \
+  /usr/include/bits/posix_opt.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/bits/sigset.h \
+  /usr/include/bits/syscall.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/endian.h \
+  /usr/include/features.h \
+  /usr/include/getopt.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/syscall.h \
+  /usr/include/sys/sysmacros.h \
+  /usr/include/sys/types.h \
+  /usr/include/time.h \
+  /usr/include/unistd.h \
+  /usr/include/xlocale.h \
+  /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h
+
+
+/usr/include/unistd.h:
+
+/usr/include/bits/confname.h:
+
+/root/sylar/sylar/util.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stdint.h:
 
@@ -223,7 +270,11 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/c++/4.8.2/stdexcept:
 
+/usr/include/getopt.h:
+
 /usr/include/c++/4.8.2/ostream:
+
+/usr/include/bits/posix_opt.h:
 
 /usr/include/c++/4.8.2/new:
 
@@ -257,11 +308,11 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/c++/4.8.2/cstdio:
 
-/usr/include/time.h:
-
-/usr/include/c++/4.8.2/bits/exception_defines.h:
+/usr/include/c++/4.8.2/cstdint:
 
 /usr/include/c++/4.8.2/bits/concept_check.h:
+
+/usr/include/c++/4.8.2/cstdarg:
 
 /usr/include/c++/4.8.2/bits/char_traits.h:
 
@@ -277,25 +328,21 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/c++/4.8.2/bits/stl_iterator_base_funcs.h:
 
-/usr/include/features.h:
-
-/usr/include/c++/4.8.2/bits/exception_ptr.h:
-
-/usr/include/c++/4.8.2/bits/alloc_traits.h:
-
 /usr/include/c++/4.8.2/bits/nested_exception.h:
 
-/usr/include/sched.h:
-
-/usr/include/c++/4.8.2/debug/debug.h:
-
-/usr/include/bits/endian.h:
+/usr/include/bits/time.h:
 
 /usr/include/c++/4.8.2/bits/functional_hash.h:
 
 /usr/include/_G_config.h:
 
+/usr/include/bits/environments.h:
+
 /usr/include/c++/4.8.2/bits/locale_classes.h:
+
+/usr/include/time.h:
+
+/usr/include/c++/4.8.2/bits/exception_defines.h:
 
 /usr/include/bits/errno.h:
 
@@ -311,7 +358,17 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/bits/byteswap-16.h:
 
+/usr/include/sys/syscall.h:
+
 /usr/include/bits/pthreadtypes.h:
+
+/usr/include/sched.h:
+
+/usr/include/c++/4.8.2/debug/debug.h:
+
+/usr/include/bits/endian.h:
+
+/root/sylar/sylar/singleton.h:
 
 /usr/include/c++/4.8.2/bits/cpp_type_traits.h:
 
@@ -367,6 +424,8 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/bits/setjmp.h:
 
+/usr/include/asm/unistd.h:
+
 /usr/include/bits/sigset.h:
 
 /usr/include/errno.h:
@@ -395,9 +454,15 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/bits/stdio_lim.h:
 
+/usr/include/asm/unistd_64.h:
+
 /usr/include/c++/4.8.2/bits/stl_list.h:
 
-/usr/include/bits/time.h:
+/usr/include/features.h:
+
+/usr/include/c++/4.8.2/bits/alloc_traits.h:
+
+/usr/include/c++/4.8.2/bits/exception_ptr.h:
 
 /root/sylar/sylar/log.h:
 
@@ -475,7 +540,7 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 
 /usr/include/c++/4.8.2/bits/stl_multimap.h:
 
-/usr/include/c++/4.8.2/cstdint:
+/root/sylar/sylar/util.cc:
 
 /usr/include/c++/4.8.2/bits/stl_pair.h:
 
@@ -498,6 +563,8 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
 /usr/include/c++/4.8.2/utility:
 
 /usr/include/c++/4.8.2/bits/streambuf.tcc:
+
+/usr/include/bits/syscall.h:
 
 /usr/include/c++/4.8.2/clocale:
 

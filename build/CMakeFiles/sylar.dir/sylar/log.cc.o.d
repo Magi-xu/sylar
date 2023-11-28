@@ -121,4 +121,5 @@ CMakeFiles/sylar.dir/sylar/log.cc.o: /root/sylar/sylar/log.cc \
  /usr/include/c++/4.8.2/backward/auto_ptr.h /usr/include/c++/4.8.2/map \
  /usr/include/c++/4.8.2/bits/stl_tree.h \
  /usr/include/c++/4.8.2/bits/stl_map.h \
- /usr/include/c++/4.8.2/bits/stl_multimap.h
+ /usr/include/c++/4.8.2/bits/stl_multimap.h /root/sylar/sylar/singleton.h \
+ /usr/include/c++/4.8.2/cstdarg
