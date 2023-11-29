@@ -1,0 +1,25 @@
+# ninja log v5
+1	17332	1701342762065670530	CMakeFiles/sylar.dir/sylar/config.cc.o	6a383a0a23f2dd4
+1812	1879	1701348900635936117	/root/sylar/lib/libsylar.so	df79d58397226e6d
+1009	1100	1701350048731956644	/root/sylar/bin/test_config	7f54b2bfc1505d82
+7	500	1701188759363192063	CMakeFiles/test.dir/tests/test.cc.o	a271df3e4722f64
+1261	1285	1701188760150136065	/root/sylar/bin/test	17417e2cb2cd65d9
+2	1812	1701348900563933506	CMakeFiles/sylar.dir/sylar/log.cc.o	684079fe5259f88e
+1	1009	1701350048638953273	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1	50	1701272647316431629	CMakeFiles/sylar.dir/sylar/util.cc.o	38baa39537e63966
+1	1464	1701350258341554016	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1464	1571	1701350258451558006	/root/sylar/bin/test_config	7f54b2bfc1505d82
+2	1118	1701350276414209628	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1119	1217	1701350276514213256	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	1109	1701350415297247814	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1110	1211	1701350415399251515	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	1844	1701350890233509625	CMakeFiles/sylar.dir/sylar/log.cc.o	684079fe5259f88e
+1844	1904	1701350890298512001	/root/sylar/lib/libsylar.so	df79d58397226e6d
+1904	1999	1701350890392515437	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	1772	1701350954011840825	CMakeFiles/sylar.dir/sylar/log.cc.o	684079fe5259f88e
+1772	1835	1701350954077843238	/root/sylar/lib/libsylar.so	df79d58397226e6d
+1835	1932	1701350954173846746	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	1169	1701350970551445374	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1169	1268	1701350970651449029	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	1205	1701351547512483019	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+1205	1342	1701351547649488028	/root/sylar/bin/test_config	7f54b2bfc1505d82

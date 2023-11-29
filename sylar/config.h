@@ -231,6 +231,7 @@ namespace sylar {
     class ConfigVar : public ConfigVarBase {
     public:
         typedef std::shared_ptr<ConfigVar> ptr;
+        typedef std::function<void (const T& old_value, const T& nuew_value)> on_change_cb;
 
         ConfigVar(const std::string& name, const T& default_value, const std::string& description = "")
             : ConfigVarBase(name, description), m_val(default_value) {
@@ -241,7 +242,7 @@ namespace sylar {
 //                return boost::lexical_cast<std::string>(m_val);
                 return ToStr()(m_val);
             }catch (std::exception& e) {
-                SYLAR_LOG_ERROR(SYLAR_LOG_ROOT()) << "ConfigVar::toString exception"
+                SYLAR_LOG_ERROR(SYLAR_LOG_ROOT()) << "ConfigVar::toString exception "
                     << e.what() << " convert: " << typeid(m_val).name() << " to string";
             }
             return "";
@@ -252,17 +253,43 @@ namespace sylar {
 //                m_val = boost::lexical_cast<T>(val);
                 setValue(FromStr()(val));
             }catch (std::exception& e) {
-                SYLAR_LOG_ERROR(SYLAR_LOG_ROOT()) << "ConfigVar::toString exception"
-                    << e.what() << " convert: string to" << typeid(m_val).name();
+                SYLAR_LOG_ERROR(SYLAR_LOG_ROOT()) << "ConfigVar::toString exception "
+                    << e.what() << " convert: string to " << typeid(m_val).name();
             }
             return false;
         }
 
         const T getValue() const { return m_val;}
-        void setValue(const T& v) { m_val = v;}
+        void setValue(const T& v) {
+            if (v == m_val) return;
+            for (auto& i : m_cbs) {
+                i.second(m_val, v); //i.second is function
+            }
+            m_val = v;
+        }
         std::string getTypeName() override { return typeid(T).name();}
+
+        void addListener(uint64_t key, on_change_cb cb) {
+            m_cbs[key] = cb;
+        }
+
+        void delListener(uint64_t key) {
+            m_cbs.erase(key);
+        }
+
+        void clearListener() {
+            m_cbs.clear();
+        }
+
+        // i.second
+        on_change_cb getListener(uint64_t key) {
+            auto it = m_cbs.find(key);
+            return it==m_cbs.end() ? nullptr : it->second;
+        }
     private:
         T m_val;
+
+        std::map<uint64_t, on_change_cb> m_cbs;
     };
 
     class Config {
@@ -271,8 +298,8 @@ namespace sylar {
 
         template<class T>
         static typename ConfigVar<T>::ptr Lookup(const std::string& name, const T& default_value, const std::string &description = "") {
-            auto it = s_datas.find(name);
-            if (it != s_datas.end()) {
+            auto it = GetDatas().find(name);
+            if (it != GetDatas().end()) {
                 auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
                 if (tmp) {
                     SYLAR_LOG_INFO(SYLAR_LOG_ROOT()) << "Lookup name=" << name << " exists";
@@ -288,14 +315,14 @@ namespace sylar {
                 throw std::invalid_argument(name);
             }
             typename ConfigVar<T>::ptr v(new ConfigVar<T>(name, default_value, description));
-            s_datas[name] = v;
+            GetDatas()[name] = v;
             return v;
         }
 
         template<class T>
         static typename ConfigVar<T>::ptr Lookup(const std::string& name) {
-            auto it = s_datas.find(name);
-            if (it == s_datas.end()) {
+            auto it = GetDatas().find(name);
+            if (it == GetDatas().end()) {
                 return nullptr;
             }
         return std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
@@ -305,7 +332,10 @@ namespace sylar {
 
         static ConfigVarBase::ptr LookupBase(const std::string& name);
     private:
-        static ConfigVarMap s_datas;
+        static ConfigVarMap& GetDatas() {
+            static ConfigVarMap s_datas;
+            return s_datas;
+        }
     };
 }
 
