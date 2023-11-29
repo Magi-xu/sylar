@@ -1,0 +1,5 @@
+/root/sylar/cmake-build-debug/CMakeFiles/sylar.dir
+/root/sylar/cmake-build-debug/CMakeFiles/test.dir
+/root/sylar/cmake-build-debug/CMakeFiles/test_config.dir
+/root/sylar/cmake-build-debug/CMakeFiles/edit_cache.dir
+/root/sylar/cmake-build-debug/CMakeFiles/rebuild_cache.dir

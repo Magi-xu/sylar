@@ -1,0 +1,9 @@
+# ninja log v5
+1	11427	1701260400279185679	CMakeFiles/sylar.dir/sylar/config.cc.o	6a383a0a23f2dd4
+11430	11581	1701260400465192507	/root/sylar/lib/libsylar.so	df79d58397226e6d
+957	1045	1701263757216663043	/root/sylar/bin/test_config	7f54b2bfc1505d82
+7	500	1701188759363192063	CMakeFiles/test.dir/tests/test.cc.o	a271df3e4722f64
+1261	1285	1701188760150136065	/root/sylar/bin/test	17417e2cb2cd65d9
+1	668	1701248466019915057	CMakeFiles/sylar.dir/sylar/log.cc.o	684079fe5259f88e
+1	957	1701263757127659780	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+3	119	1701248465465894478	CMakeFiles/sylar.dir/sylar/util.cc.o	38baa39537e63966
