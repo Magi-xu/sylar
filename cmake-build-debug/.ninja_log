@@ -23,3 +23,9 @@
 1169	1268	1701350970651449029	/root/sylar/bin/test_config	7f54b2bfc1505d82
 1	1205	1701351547512483019	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
 1205	1342	1701351547649488028	/root/sylar/bin/test_config	7f54b2bfc1505d82
+1	248	1701360292461393557	CMakeFiles/test.dir/tests/test.cc.o	5e560456c85d70e5
+1	1136	1701360293347428014	CMakeFiles/sylar.dir/sylar/config.cc.o	6a383a0a23f2dd4
+0	1969	1701360294179460326	CMakeFiles/sylar.dir/sylar/log.cc.o	684079fe5259f88e
+1969	2030	1701360294242462781	/root/sylar/lib/libsylar.so	df79d58397226e6d
+1	940	1701360307867992692	CMakeFiles/test_config.dir/tests/test_config.cc.o	fb762190d5aac460
+940	1024	1701360307952995997	/root/sylar/bin/test_config	7f54b2bfc1505d82
