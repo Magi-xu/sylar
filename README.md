@@ -2,21 +2,32 @@
 
 ### data
 
-name:string,
-level:LogLevel,
+name:string
+
+level:LogLevel
+
 appender:vector< LogAppender >
+
 formatter:LogFormatter
 
 ### functions
 
 log
+
 warn
+
 error
+
 fatal
+
 addAppender
+
 delAppender
+
 clearAppender
+
 setFormatter
+
 setLevel
 
 # LogAppender
@@ -26,11 +37,13 @@ setLevel
 ### data
 
 level:LogLevel
+
 formatter:LogFormatter
 
 ### functions
 
 log
+
 toYamlString
 
 # LogFormatter
@@ -40,6 +53,7 @@ toYamlString
 ### data
 
 formatter:string
+
 items:vector< FormatItem >
 
 ### functions
@@ -57,6 +71,7 @@ file:string
 ### functions
 
 log
+
 toYamlString
 
 # StdoutLogAppender ：继承 LogAppender
@@ -66,6 +81,7 @@ log到控制台，提供输出为yaml格式的配置文件
 ### functions
 
 log
+
 toYamlString
 
 # FormatItem ：被LogFomatter拥有
@@ -81,17 +97,27 @@ format
 format
 
 提供：
-XX(m, MessageFormatItem),
-XX(p, LevelFormatItem),
-XX(r, ElapseFormatItem),
-XX(c, NameFormatItem),
-XX(t, ThreadIdFormatItem),
-XX(n, NewLineFormatItem),
-XX(d, DateTimeFormatItem),
-XX(f, FilenameFormatItem),
-XX(l, LineFormatItem),
-XX(T, TabFormatItem),
-XX(F, FiberIdFormatItem),
+XX(m, MessageFormatItem)
+
+XX(p, LevelFormatItem)
+
+XX(r, ElapseFormatItem)
+
+XX(c, NameFormatItem)
+
+XX(t, ThreadIdFormatItem)
+
+XX(n, NewLineFormatItem)
+
+XX(d, DateTimeFormatItem)
+
+XX(f, FilenameFormatItem)
+
+XX(l, LineFormatItem)
+
+XX(T, TabFormatItem)
+
+XX(F, FiberIdFormatItem)
 
 实现各种格式灵活组合
 
@@ -102,6 +128,7 @@ XX(F, FiberIdFormatItem),
 # Config
 
 静态初始化，初始配置
+
 提供Lookup实现输入输出和修改配置情况
 
 ### data
@@ -119,11 +146,13 @@ Lookup
 ### data
 
 name:string
+
 description:string
 
 ### functions
 
 fromString
+
 toString
 
 # template< T > ConfigVar ：继承 ConfigVarBase
@@ -137,7 +166,9 @@ val:T
 ### function
 
 fromString
+
 toString
+
 getValue
 
 # template< F, T > LexicalCast
