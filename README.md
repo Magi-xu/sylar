@@ -19,7 +19,6 @@ clearAppender
 setFormatter
 setLevel
 
-
 # LogAppender
 
 控制log呈现方式
@@ -33,8 +32,6 @@ formatter:LogFormatter
 
 log
 toYamlString
-
----
 
 # LogFormatter
 
