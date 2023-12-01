@@ -84,3 +84,7 @@
 
 2023-12-01 15:34:06 - hello system
 
+2023-12-01 17:18:37	[INFO]	hello system
+
+2023-12-01 17:18:37 - hello system
+
