@@ -181,9 +181,11 @@ public:
 //日志输出地
 class LogAppender
 {
+    friend class Logger;
 protected:
     /* data */
     LogLevel::Level m_level = LogLevel::DEBUG;
+    bool m_hasFromatter = false;
     std::shared_ptr<LogFormatter> m_formatter;
 public:
     typedef std::shared_ptr<LogAppender> ptr;
@@ -192,7 +194,7 @@ public:
 
     virtual void log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
 
-    void setFormatter(std::shared_ptr<LogFormatter> val) { m_formatter = val;}
+    void setFormatter(std::shared_ptr<LogFormatter> val);
     std::shared_ptr<LogFormatter> getFormatter() const { return m_formatter;}
 
     void setLevel(LogLevel::Level level) { m_level = level;}

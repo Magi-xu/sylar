@@ -56,6 +56,15 @@ namespace sylar {
         return m_event->getSS();
     }
 
+    void LogAppender::setFormatter(std::shared_ptr<LogFormatter> val) {
+        m_formatter = val;
+        if(m_formatter) {
+            m_hasFromatter = true;
+        } else {
+            m_hasFromatter = false;
+        }
+    }
+
     class MessageFormatItem : public LogFormatter::FormatItem
     {
     public:
@@ -238,6 +247,12 @@ namespace sylar {
 
     void Logger::setFormatter(std::shared_ptr<LogFormatter> val) {
         m_formatter = val;
+
+        for (auto& i : m_appenders) {
+            if (!i->m_hasFromatter) {
+                i->m_formatter = m_formatter;
+            }
+        }
     }
     void Logger::setFormatter(const std::string& val) {
         sylar::LogFormatter::ptr new_val(new sylar::LogFormatter(val));
@@ -247,7 +262,7 @@ namespace sylar {
                     << std::endl;
             return;
         }
-        m_formatter = new_val;
+        setFormatter(new_val);
     }
     std::shared_ptr<LogFormatter> Logger::getFormatter() {
         return m_formatter;
@@ -255,7 +270,7 @@ namespace sylar {
 
     void Logger::addAppender(std::shared_ptr<LogAppender> appender) {
         if (!appender->getFormatter()) {
-            appender->setFormatter(m_formatter);
+            appender->m_formatter = m_formatter;
         }
         m_appenders.push_back(appender);
     }
@@ -305,7 +320,7 @@ namespace sylar {
         node["type"] = "FileLogAppender";
         node["file"] = m_filename;
         if (m_level != LogLevel::UNKNOW) node["level"] = LogLevel::ToString(m_level);
-        if (m_formatter) node["formatter"] = m_formatter->getPattern();
+        if (m_hasFromatter && m_formatter) node["formatter"] = m_formatter->getPattern();
         std::stringstream ss;
         ss << node;
         return ss.str();
@@ -320,7 +335,7 @@ namespace sylar {
         YAML::Node node;
         node["type"] = "StdoutLogAppender";
         if (m_level != LogLevel::UNKNOW) node["level"] = LogLevel::ToString(m_level);
-        if (m_formatter) node["formatter"] = m_formatter->getPattern();
+        if (m_hasFromatter && m_formatter) node["formatter"] = m_formatter->getPattern();
         std::stringstream ss;
         ss << node;
         return ss.str();
@@ -565,7 +580,7 @@ namespace sylar {
             YAML::Node node;
             node["name"] = ld.name;
             if (ld.level != LogLevel::UNKNOW) node["level"] = LogLevel::ToString(ld.level);
-            node["formatter"] = ld.formatter;
+            if (!ld.formatter.empty()) node["formatter"] = ld.formatter;
 
             for (auto& a : ld.appenders) {
                 YAML::Node subnode;
@@ -617,6 +632,14 @@ namespace sylar {
                             ap.reset(new StdoutLogAppender);
                         }
                         ap->setLevel(a.level);
+                        if (!a.formatter.empty()) {
+                            LogFormatter::ptr fmt(new LogFormatter(a.formatter));
+                            if (!fmt->isError()) {
+                                ap->setFormatter(fmt);
+                            } else {
+                                std::cout << "log name=" << i.name << " appender type:" << a.type << " formatter=" << a.formatter << " is invalid" << std::endl;
+                            }
+                        }
                         logger->addAppender(ap);
                     }
                 }

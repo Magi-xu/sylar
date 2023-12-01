@@ -190,15 +190,19 @@ void test_log() {
     static sylar::Logger::ptr root_log = SYLAR_LOG_NAME("root");
     SYLAR_LOG_INFO(system_log) << "hello system" << std::endl;
     SYLAR_LOG_INFO(root_log) << "hello root" << std::endl;
-//    std::cout << sylar::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+    std::cout << sylar::LoggerMgr::GetInstance()->toYamlString() << std::endl;
     YAML::Node root = YAML::LoadFile("/root/sylar/bin/conf/log.yml");
     std::cout << "==========================================" << std::endl;
     sylar::Config::LoadFromYaml(root);
     std::cout << "==========================================" << std::endl;
-//    std::cout << sylar::LoggerMgr::GetInstance()->toYamlString() << std::endl;
-//    std::cout << root << std::endl;
+    std::cout << sylar::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+    std::cout << "==========================================" << std::endl;
+    std::cout << root << std::endl;
     SYLAR_LOG_INFO(system_log) << "hello system" << std::endl;
     SYLAR_LOG_INFO(root_log) << "hello root" << std::endl;
+
+    system_log->setFormatter("%d - %m%n");
+    SYLAR_LOG_INFO(system_log) << "hello system" << std::endl;
 
 }
 

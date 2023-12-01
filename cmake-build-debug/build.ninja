@@ -50,23 +50,23 @@ cmake_ninja_workdir = /root/sylar/cmake-build-debug/
 build cmake_object_order_depends_target_sylar: phony || CMakeFiles/sylar.dir
 
 build CMakeFiles/sylar.dir/sylar/log.cc.o: CXX_COMPILER__sylar_unscanned_Debug /root/sylar/sylar/log.cc || cmake_object_order_depends_target_sylar
-  DEFINES = -Dsylar_EXPORTS
+  DEFINES = -Dsylar_EXPORTS -D__FILE__=\"sylar/log.cc\"
   DEP_FILE = CMakeFiles/sylar.dir/sylar/log.cc.o.d
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g -fPIC
   OBJECT_DIR = CMakeFiles/sylar.dir
   OBJECT_FILE_DIR = CMakeFiles/sylar.dir/sylar
 
 build CMakeFiles/sylar.dir/sylar/util.cc.o: CXX_COMPILER__sylar_unscanned_Debug /root/sylar/sylar/util.cc || cmake_object_order_depends_target_sylar
-  DEFINES = -Dsylar_EXPORTS
+  DEFINES = -Dsylar_EXPORTS -D__FILE__=\"sylar/util.cc\"
   DEP_FILE = CMakeFiles/sylar.dir/sylar/util.cc.o.d
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g -fPIC
   OBJECT_DIR = CMakeFiles/sylar.dir
   OBJECT_FILE_DIR = CMakeFiles/sylar.dir/sylar
 
 build CMakeFiles/sylar.dir/sylar/config.cc.o: CXX_COMPILER__sylar_unscanned_Debug /root/sylar/sylar/config.cc || cmake_object_order_depends_target_sylar
-  DEFINES = -Dsylar_EXPORTS
+  DEFINES = -Dsylar_EXPORTS -D__FILE__=\"sylar/config.cc\"
   DEP_FILE = CMakeFiles/sylar.dir/sylar/config.cc.o.d
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g -fPIC
   OBJECT_DIR = CMakeFiles/sylar.dir
   OBJECT_FILE_DIR = CMakeFiles/sylar.dir/sylar
 
@@ -79,7 +79,7 @@ build CMakeFiles/sylar.dir/sylar/config.cc.o: CXX_COMPILER__sylar_unscanned_Debu
 # Link the shared library /root/sylar/lib/libsylar.so
 
 build /root/sylar/lib/libsylar.so: CXX_SHARED_LIBRARY_LINKER__sylar_Debug CMakeFiles/sylar.dir/sylar/log.cc.o CMakeFiles/sylar.dir/sylar/util.cc.o CMakeFiles/sylar.dir/sylar/config.cc.o
-  LANGUAGE_COMPILE_FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+  LANGUAGE_COMPILE_FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g
   OBJECT_DIR = CMakeFiles/sylar.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -98,8 +98,9 @@ build /root/sylar/lib/libsylar.so: CXX_SHARED_LIBRARY_LINKER__sylar_Debug CMakeF
 build cmake_object_order_depends_target_test: phony || cmake_object_order_depends_target_sylar
 
 build CMakeFiles/test.dir/tests/test.cc.o: CXX_COMPILER__test_unscanned_Debug /root/sylar/tests/test.cc || cmake_object_order_depends_target_test
+  DEFINES = -D__FILE__=\"tests/test.cc\"
   DEP_FILE = CMakeFiles/test.dir/tests/test.cc.o.d
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g
   OBJECT_DIR = CMakeFiles/test.dir
   OBJECT_FILE_DIR = CMakeFiles/test.dir/tests
 
@@ -112,7 +113,7 @@ build CMakeFiles/test.dir/tests/test.cc.o: CXX_COMPILER__test_unscanned_Debug /r
 # Link the executable /root/sylar/bin/test
 
 build /root/sylar/bin/test: CXX_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/tests/test.cc.o | /root/sylar/lib/libsylar.so || /root/sylar/lib/libsylar.so
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g
   LINK_LIBRARIES = -Wl,-rpath,/root/sylar/lib  /root/sylar/lib/libsylar.so
   OBJECT_DIR = CMakeFiles/test.dir
   POST_BUILD = :
@@ -130,8 +131,9 @@ build /root/sylar/bin/test: CXX_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.di
 build cmake_object_order_depends_target_test_config: phony || cmake_object_order_depends_target_sylar
 
 build CMakeFiles/test_config.dir/tests/test_config.cc.o: CXX_COMPILER__test_config_unscanned_Debug /root/sylar/tests/test_config.cc || cmake_object_order_depends_target_test_config
+  DEFINES = -D__FILE__=\"tests/test_config.cc\"
   DEP_FILE = CMakeFiles/test_config.dir/tests/test_config.cc.o.d
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g
   OBJECT_DIR = CMakeFiles/test_config.dir
   OBJECT_FILE_DIR = CMakeFiles/test_config.dir/tests
 
@@ -144,7 +146,7 @@ build CMakeFiles/test_config.dir/tests/test_config.cc.o: CXX_COMPILER__test_conf
 # Link the executable /root/sylar/bin/test_config
 
 build /root/sylar/bin/test_config: CXX_EXECUTABLE_LINKER__test_config_Debug CMakeFiles/test_config.dir/tests/test_config.cc.o | /root/sylar/lib/libsylar.so || /root/sylar/lib/libsylar.so
-  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+  FLAGS = -rdynamic -O0 -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -g
   LINK_LIBRARIES = -Wl,-rpath,/root/sylar/lib  /root/sylar/lib/libsylar.so  -lyaml-cpp
   OBJECT_DIR = CMakeFiles/test_config.dir
   POST_BUILD = :
@@ -203,14 +205,14 @@ build all: phony /root/sylar/lib/libsylar.so /root/sylar/bin/test /root/sylar/bi
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /root/sylar/CMakeLists.txt CMakeCache.txt CMakeFiles/3.27.0/CMakeCCompiler.cmake CMakeFiles/3.27.0/CMakeCXXCompiler.cmake CMakeFiles/3.27.0/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /root/sylar/CMakeLists.txt /root/sylar/cmake/util.cmake CMakeCache.txt CMakeFiles/3.27.0/CMakeCCompiler.cmake CMakeFiles/3.27.0/CMakeCXXCompiler.cmake CMakeFiles/3.27.0/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /root/sylar/CMakeLists.txt CMakeCache.txt CMakeFiles/3.27.0/CMakeCCompiler.cmake CMakeFiles/3.27.0/CMakeCXXCompiler.cmake CMakeFiles/3.27.0/CMakeSystem.cmake: phony
+build /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /root/.cache/JetBrains/RemoteDev/dist/aa340ce67cce3_CLion-233.11799.37/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /root/sylar/CMakeLists.txt /root/sylar/cmake/util.cmake CMakeCache.txt CMakeFiles/3.27.0/CMakeCCompiler.cmake CMakeFiles/3.27.0/CMakeCXXCompiler.cmake CMakeFiles/3.27.0/CMakeSystem.cmake: phony
 
 
 #############################################
