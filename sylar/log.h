@@ -13,6 +13,7 @@
 #include <map>
 #include "singleton.h"
 #include "util.h"
+#include "thread.h"
 
 #define SYLAR_LOG_LEVEL(logger, level) \
     if (logger->getLevel() <= level) \
@@ -117,6 +118,7 @@ class Logger : public std::enable_shared_from_this<Logger>
     friend class LoggerManager;
 public:
     typedef std::shared_ptr<Logger> ptr;
+    typedef Spinlock MutexType;
 
     Logger (const std::string& name = "root");
     void log(LogLevel::Level level, LogEvent::ptr event);
@@ -143,6 +145,7 @@ private:
     /* data */
     std::string m_name;                                     //日志名称
     LogLevel::Level m_level;                                //日志级别
+    MutexType m_mutex;
     std::list<std::shared_ptr<LogAppender>> m_appenders;    //Appender集合
     std::shared_ptr<LogFormatter> m_formatter;
     Logger::ptr m_root;
@@ -182,25 +185,27 @@ public:
 class LogAppender
 {
     friend class Logger;
-protected:
-    /* data */
-    LogLevel::Level m_level = LogLevel::DEBUG;
-    bool m_hasFromatter = false;
-    std::shared_ptr<LogFormatter> m_formatter;
 public:
     typedef std::shared_ptr<LogAppender> ptr;
+    typedef Spinlock MutexType;
 
     virtual ~LogAppender() {}
 
     virtual void log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
 
     void setFormatter(std::shared_ptr<LogFormatter> val);
-    std::shared_ptr<LogFormatter> getFormatter() const { return m_formatter;}
+    std::shared_ptr<LogFormatter> getFormatter();
 
     void setLevel(LogLevel::Level level) { m_level = level;}
     LogLevel::Level getLevel() const { return m_level;}
 
     virtual std::string toYamlString() = 0;
+protected:
+    /* data */
+    LogLevel::Level m_level = LogLevel::DEBUG;
+    bool m_hasFromatter = false;
+    MutexType m_mutex;
+    std::shared_ptr<LogFormatter> m_formatter;
 };
 
 //输出到控制台
@@ -224,6 +229,7 @@ private:
     /* data */
     std::string m_filename;
     std::ofstream m_filestream;
+    uint64_t m_lastTime;
 public:
     typedef std::shared_ptr<FileLogAppender> ptr;
 
@@ -237,10 +243,8 @@ public:
 
 class LoggerManager
 {
-private:
-    std::map<std::string, Logger::ptr> m_loggers;
-    Logger::ptr m_root;
 public:
+    typedef Spinlock MutexType;
     LoggerManager();
     Logger::ptr getLogger(const std::string& name);
 
@@ -248,6 +252,10 @@ public:
     Logger::ptr getRoot() const { return m_root;}
 
     std::string toYamlString();
+private:
+    MutexType m_mutex;
+    std::map<std::string, Logger::ptr> m_loggers;
+    Logger::ptr m_root;
 };
 
 typedef sylar::Singleton<LoggerManager> LoggerMgr;

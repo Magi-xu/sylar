@@ -34,3 +34,29 @@
 
 2023-12-01 17:18:37	hello root
 
+2023-12-07 17:02:11	hello root
+
+2023-12-07 17:06:36	hello root
+
+2023-12-07 17:06:36	name=class.person_map description=system person map typename=St3mapISs6PersonSt4lessISsESaISt4pairIKSsS0_EEE value=
+2023-12-07 17:06:36	name=class.person description=system person typename=6Person value=name: ""
+age: 0
+sex: false
+2023-12-07 17:06:36	name=logs description=logs config typename=St3setIN5sylar9LogDefineESt4lessIS1_ESaIS1_EE value=- name: root
+  level: INFO
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      formatter: ""
+      file: root.txt
+    - type: StdoutLogAppender
+      formatter: ""
+- name: system
+  level: DEBUG
+  formatter: "%d%T[%p]%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      formatter: ""
+      file: system.txt
+    - type: StdoutLogAppender
+      formatter: ""

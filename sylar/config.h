@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include "log.h"
 #include "yaml-cpp/yaml.h"
+#include "thread.h"
 
 namespace sylar {
     class ConfigVarBase {
@@ -230,6 +231,7 @@ namespace sylar {
     template<class T, class FromStr = LexicalCast<std::string, T>, class ToStr = LexicalCast<T, std::string>>
     class ConfigVar : public ConfigVarBase {
     public:
+        typedef RWMutex RWMutexType;
         typedef std::shared_ptr<ConfigVar> ptr;
         typedef std::function<void (const T& old_value, const T& nuew_value)> on_change_cb;
 
@@ -240,6 +242,7 @@ namespace sylar {
         std::string toString() override {
             try {
 //                return boost::lexical_cast<std::string>(m_val);
+                RWMutexType::ReadLock lock(m_mutex);
                 return ToStr()(m_val);
             }catch (std::exception& e) {
                 SYLAR_LOG_ERROR(SYLAR_LOG_ROOT()) << "ConfigVar::toString exception "
@@ -259,34 +262,49 @@ namespace sylar {
             return false;
         }
 
-        const T getValue() const { return m_val;}
+        const T getValue() {
+            RWMutexType::ReadLock lock(m_mutex);
+            return m_val;
+        }
         void setValue(const T& v) {
-            if (v == m_val) return;
-            for (auto& i : m_cbs) {
-                i.second(m_val, v); //i.second is function
+            {
+                RWMutexType::ReadLock lock(m_mutex);
+                if (v == m_val) return;
+                for (auto &i: m_cbs) {
+                    i.second(m_val, v); //i.second is a function
+                }
             }
+            RWMutexType::WriteLock lock(m_mutex);
             m_val = v;
         }
         std::string getTypeName() override { return typeid(T).name();}
 
-        void addListener(uint64_t key, on_change_cb cb) {
-            m_cbs[key] = cb;
+        uint64_t addListener(on_change_cb cb) {
+            static uint64_t s_fun_id = 0;
+            RWMutexType::WriteLock lock(m_mutex);
+            ++s_fun_id;
+            m_cbs[s_fun_id] = cb;
+            return s_fun_id;
         }
 
         void delListener(uint64_t key) {
+            RWMutexType::WriteLock lock(m_mutex);
             m_cbs.erase(key);
         }
 
         void clearListener() {
+            RWMutexType::WriteLock lock(m_mutex);
             m_cbs.clear();
         }
 
         // i.second
         on_change_cb getListener(uint64_t key) {
+            RWMutexType::ReadLock lock(m_mutex);
             auto it = m_cbs.find(key);
             return it==m_cbs.end() ? nullptr : it->second;
         }
     private:
+        RWMutexType m_mutex;
         T m_val;
 
         std::map<uint64_t, on_change_cb> m_cbs;
@@ -295,9 +313,11 @@ namespace sylar {
     class Config {
     public:
         typedef std::unordered_map<std::string, ConfigVarBase::ptr> ConfigVarMap;
+        typedef RWMutex RWMutexType;
 
         template<class T>
         static typename ConfigVar<T>::ptr Lookup(const std::string& name, const T& default_value, const std::string &description = "") {
+            RWMutexType::WriteLock lock(GetMutex());
             auto it = GetDatas().find(name);
             if (it != GetDatas().end()) {
                 auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
@@ -321,6 +341,7 @@ namespace sylar {
 
         template<class T>
         static typename ConfigVar<T>::ptr Lookup(const std::string& name) {
+            RWMutexType::ReadLock lock(GetMutex());
             auto it = GetDatas().find(name);
             if (it == GetDatas().end()) {
                 return nullptr;
@@ -331,10 +352,17 @@ namespace sylar {
         static void LoadFromYaml(const YAML::Node& root);
 
         static ConfigVarBase::ptr LookupBase(const std::string& name);
+
+        static void Visit(std::function<void(ConfigVarBase::ptr)> cb);
     private:
         static ConfigVarMap& GetDatas() {
             static ConfigVarMap s_datas;
             return s_datas;
+        }
+
+        static RWMutexType& GetMutex() {
+            static RWMutexType s_mutex;
+            return s_mutex;
         }
     };
 }
